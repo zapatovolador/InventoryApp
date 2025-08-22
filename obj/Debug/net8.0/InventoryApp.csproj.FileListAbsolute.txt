@@ -31,3 +31,4 @@
 /home/jon/Abantail/InventoryApp/obj/Debug/net8.0/InventoryApp.pdb
 /home/jon/Abantail/InventoryApp/obj/Debug/net8.0/InventoryApp.genruntimeconfig.cache
 /home/jon/Abantail/InventoryApp/obj/Debug/net8.0/ref/InventoryApp.dll
+/home/jon/Abantail/InventoryApp/obj/Debug/net8.0/InventoryApp.sourcelink.json

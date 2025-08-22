@@ -20,6 +20,12 @@ namespace InventoryApp.Repositories
         // Create a new product
         public void Create(Product product)
         {
+            // Check if a product with the same name already exists
+            if (_products.Any(p => p.Name.Equals(product.Name, StringComparison.OrdinalIgnoreCase)))
+            {
+                // Throw an exception or return a value indicating the failure
+                throw new InvalidOperationException("A product with this name already exists.");
+            }
             product.Id = _nextId++;
             _products.Add(product);
         }
