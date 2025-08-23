@@ -33,11 +33,8 @@ namespace InventoryApp.Repositories
         public bool Update(Product product)
         {
             var existing = GetById(product.Id);
-            if (existing == null)
-            {
-                return false;
-            }
-
+            if (existing == null)return false;
+            
             //  If the name has changed, we check if it already exists in another product.
             if (existing.Name != product.Name)
             {
