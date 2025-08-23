@@ -55,9 +55,8 @@ Configures application services:
 ## Testing
 
 You can test the API using:
-- [Swagger UI](http://localhost:{port}/swagger)
+- SwaggerUI
 - Postman
-- curl
 
 ## Future Improvements
 
