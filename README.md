@@ -62,6 +62,6 @@ You can test the API using:
 ## Future Improvements
 
 - Persistence with Entity Framework Core
-- Authentication via OAuth 
+- Authentication via OAuth with ASP.NET Core Identity
 
 
