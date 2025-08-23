@@ -1,4 +1,4 @@
-A RESTful API built in C# using ASP.NET Core to manage a product inventory. This project applies solid design principles such as Single Responsibility, Dependency Inversion, and the Repository Pattern, with in-memory data persistence.
+A RESTful API built in C# using ASP.NET Core to manage a product inventory. This project applies solid design principles such as Single Responsibility, Dependency Inversion, the Repository Pattern and Singleton Pattern, with in-memory data persistence.
 
 ## Features
 
@@ -6,7 +6,6 @@ A RESTful API built in C# using ASP.NET Core to manage a product inventory. This
 - Data validation using `DataAnnotations`
 - Decoupled architecture via interfaces
 - Logging for operation tracking
-- Interactive documentation with Swagger
 
 ## Project Structure
 
@@ -64,5 +63,5 @@ You can test the API using:
 
 - Persistence with Entity Framework Core
 - Authentication via OAuth 
-- Integration with SQL-based databases
+
 
