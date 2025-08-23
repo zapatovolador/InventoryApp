@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Registering the in-memory repository as a singleton service
 builder.Services.AddSingleton<IProductRepository, InMemoryProductRepository>();
 builder.Services.AddControllers();
-    
+
 builder.Services.AddEndpointsApiExplorer();
 // Adding Swagger for testing API
 builder.Services.AddSwaggerGen();
@@ -21,4 +21,4 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
 
-app.Run();
+app.Run(); 

@@ -50,9 +50,19 @@ namespace InventoryApp.Controllers
             {
                 return BadRequest(ModelState);
             }
-            _repository.Create(product);
-            _logger.LogInformation("Product added: {Name}", product.Name);
-            return CreatedAtAction(nameof(GetById), new { id = product.Id }, product);
+            try
+            {
+                _repository.Create(product);
+                _logger.LogInformation("Product added: {Name}", product.Name);
+                return CreatedAtAction(nameof(GetById), new { id = product.Id }, product);
+            }
+            catch (InvalidOperationException ex)
+            {
+                // Log the error and return a 409 Conflict status code
+                _logger.LogWarning("Failed to add product: {Message}", ex.Message);
+                return Conflict(new { message = ex.Message });
+            }
+            
         }
         // updating an existing product, PUT /api/products/{id}
         [HttpPut("{id}")]
