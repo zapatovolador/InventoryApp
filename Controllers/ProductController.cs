@@ -62,27 +62,39 @@ namespace InventoryApp.Controllers
                 _logger.LogWarning("Failed to add product: {Message}", ex.Message);
                 return Conflict(new { message = ex.Message });
             }
-            
+
         }
-        // updating an existing product, PUT /api/products/{id}
+        // PUT /api/products/{id}
         [HttpPut("{id}")]
         public IActionResult Update(int id, Product product)
         {
             // Data entry validation
             if (!ModelState.IsValid)
             {
+                _logger.LogWarning("Invalid model state for product update: {Id}", id);
                 return BadRequest(ModelState);
             }
 
             product.Id = id;
-            if (!_repository.Update(product))
-            {
-                _logger.LogWarning("Product not found for update: {Id}", id);
-                return NotFound();
-            }
 
-            _logger.LogInformation("Product updated: {Id}", id);
-            return Ok(product);
+            try
+            {
+                // Attempt to update the product.
+                if (!_repository.Update(product))
+                {
+                    _logger.LogWarning("Product not found for update: {Id}", id);
+                    return NotFound();
+                }
+
+                _logger.LogInformation("Product updated successfully: {Id}", id);
+                return Ok(product);
+            }
+            catch (InvalidOperationException ex)
+            {
+                // Log the error and return a 409 Conflict status code
+                _logger.LogWarning("Failed to update product: {Message}", ex.Message);
+                return Conflict(new { message = ex.Message });
+            }
         }
         // deleting a product by its ID, DELETE /api/products/{id}
         [HttpDelete("{id}")]

@@ -33,11 +33,25 @@ namespace InventoryApp.Repositories
         public bool Update(Product product)
         {
             var existing = GetById(product.Id);
-            if (existing == null) return false;
+            if (existing == null)
+            {
+                return false;
+            }
 
+            //  If the name has changed, we check if it already exists in another product.
+            if (existing.Name != product.Name)
+            {
+                if (GetByName(product.Name) != null)
+                {
+                    throw new InvalidOperationException("A product with this name already exists.");
+                }
+            }
+
+            // Update the properties of the existing product.
             existing.Name = product.Name;
             existing.Price = product.Price;
             existing.Quantity = product.Quantity;
+
             return true;
         }
         // Delete a product by ID
@@ -48,6 +62,12 @@ namespace InventoryApp.Repositories
 
             _products.Remove(product);
             return true;
+        }
+
+        // Search a product by name
+        public Product GetByName(string name)
+        {
+            return _products.FirstOrDefault(p => p.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
         }
     }
 }
