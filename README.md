@@ -60,7 +60,10 @@ You can test the API using:
 
 ## Future Improvements
 
-- Persistence with Entity Framework Core
-- Authentication via OAuth with ASP.NET Core Identity
+- **Persistence with Entity Framework Core**  
+  Integration with ASP.NET Core, support for LINQ queries and it simplifies database operations and improves maintainability. Great for SQL services or CosmosDB but not for other nonSQL services. 
+
+- **Authentication via OAuth with ASP.NET Core Identity**  
+  Enables secure user authentication using external providers like Google or Microsoft. ASP.NET Core Identity offers flexibility and scalability for managing user roles and claims.
 
 
